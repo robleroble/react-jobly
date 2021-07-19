@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom"
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import Companies from './Components/Companies';
-import Company from './Components/Company';
+import CompanyPage from './Components/CompanyPage';
 import Jobs from './Components/Jobs';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
@@ -24,7 +24,7 @@ function App() {
             <Companies />
           </Route>
           <Route path="/companies/:id">
-            <Company />
+            <CompanyPage />
           </Route>
           <Route exact path="/jobs">
             <Jobs />
