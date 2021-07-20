@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Navbar, Nav, NavbarBrand, NavItem, Collapse, NavbarToggler, NavLink as RSNavLink} from "reactstrap";
+import {Navbar, Nav, NavItem, Collapse, NavbarToggler} from "reactstrap";
 import "../Stylings/NavBar.css"
 
 const NavBar = () => {
@@ -12,27 +12,19 @@ const NavBar = () => {
 
     return (
         <Navbar className="ml-5"color="dark" dark expand="md">
-            <NavbarBrand className="ms-4">
-                <NavLink className="nav-link" to="/">Jobly</NavLink>
-            </NavbarBrand>
+            <NavLink className="ms-4 navbar-brand nav-link" to="/">Jobly</NavLink>
 
             <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="ms-auto me-4" navbar>
+                    <Nav className="ms-auto me-5" navbar>
                         <NavItem>
-                            <RSNavLink>
-                                <NavLink className="nav-link" to="/companies">Companies</NavLink>
-                            </RSNavLink>
+                            <NavLink className="nav-link" to="/companies">Companies</NavLink>
                         </NavItem>
                         <NavItem>
-                            <RSNavLink >
-                                <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
-                            </RSNavLink>
+                            <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
                         </NavItem>
                         <NavItem>
-                            <RSNavLink>
-                                <NavLink className="nav-link" to="/profile">Profile</NavLink>
-                            </RSNavLink>
+                            <NavLink className="nav-link" to="/profile">Profile</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
