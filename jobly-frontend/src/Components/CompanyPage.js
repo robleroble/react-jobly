@@ -39,17 +39,8 @@ const CompanyPage = () => {
                     </Card>
                 </Col>
             </Row>
-            {/* <Row className="justify-content-md-center"> */}
                 <JobsList jobs={company.jobs} />
-                {/* {company.jobs.map(job => (
-                    <JobCard 
-                        id={job.id}
-                        title={job.title}
-                        salary={job.salary}
-                        equity={job.equity} 
-                    />
-                ))} */}
-            {/* </Row> */}
+               
         </Container>
     )
 }
