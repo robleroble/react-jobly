@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react"
 import JoblyApi from "../JoblyApi";
 import LoaderSpinner from "./LoaderSpinner"
-import {Container, Row, Col} from "reactstrap"
+import {Container, Row } from "reactstrap"
 import JobCard from "./JobCard";
+import SearchBar from "./SearchBar"
 
 const Jobs = () => {
 
@@ -25,13 +26,11 @@ const Jobs = () => {
     return (
         <Container>
             <Row className="justify-content-md-center">
-            <Col className="mt-3" md="10">
-                <h2>Search Bar Goes Here</h2>
-            </Col>
+            <SearchBar />
             {jobs.map(job => (
                 <JobCard
                     id={job.id}
-                    key={job.key}
+                    key={job.id}
                     title={job.title}
                     salary={job.salary}
                     equity={job.equity}
