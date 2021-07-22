@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom"
 import JoblyApi from '../JoblyApi'
 import JobsList from "./JobsList"
 import LoaderSpinner from './LoaderSpinner'
+import CompanyCard from "./CompanyCard"
 import {Container, Row, Col, Card, CardTitle, CardText} from "reactstrap"
 
 const CompanyPage = () => {
@@ -11,9 +12,6 @@ const CompanyPage = () => {
 
     const [company, setCompany] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-
-    
-
 
     useEffect(()=> {
         async function getCompany() {
@@ -31,6 +29,12 @@ const CompanyPage = () => {
     return (
         <Container className="mt-5">
             <Row className="justify-content-md-center">
+                {/* <CompanyCard
+                    name={company.name}
+                    handle={company.handle}
+                    numEmployees={company.numEmployees}
+                    description={company.description}
+                /> */}
                 <Col md="10">
                     <Card body>
                     <CardTitle className="h4 fw-bolder">{company.name}</CardTitle>

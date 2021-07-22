@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import JoblyApi from '../JoblyApi'
 import CompanyCard from "./CompanyCard"
 import LoaderSpinner from './LoaderSpinner'
-import {Container} from "reactstrap"
+import {Container, Row, Col} from "reactstrap"
 
 const Companies = () => {
 
@@ -23,7 +23,10 @@ const Companies = () => {
     }
     return (
         <Container className="mt-3">
-            <h2>Search Bar Goes Here</h2>
+            <Row className="justify-content-md-center">
+            <Col className="mt-3" md="10">
+                <h2>Search Bar Goes Here</h2>
+            </Col>
             {companies.map(company => (
                 <CompanyCard
                     name={company.name}
@@ -33,6 +36,7 @@ const Companies = () => {
                     key={company.handle}
                 />
             ))}
+            </Row>
         </Container>
     )
 }

@@ -3,11 +3,11 @@ import {NavLink} from "react-router-dom"
 import { Col, Card, CardTitle, CardText } from "reactstrap";
 import "../Stylings/CompanyCard.css"
 
-const CompanyCard = ({name, handle, numEmployees, description}) => {
+const CompanyCard = ({name, handle, numEmployees, description, navLinkEnabled}) => {
 
     return (
-        <Col className="mt-3 justify-content-md-center">
-            <NavLink to={`/companies/${handle}`}>
+        <Col className="mt-3" md="10">
+            <NavLink className="CompanyCard-navlink" to={`/companies/${handle}`}>
             <Card className="shadow p-3 bg-body rounded">
                 <CardTitle className="h4 fw-bolder">{name}</CardTitle>
                 <CardText className="h6">{description}
