@@ -11,7 +11,7 @@ import Profile from './Components/Profile';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App d-flex flex-column">
       <BrowserRouter>
         <NavBar />
 

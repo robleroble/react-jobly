@@ -26,6 +26,12 @@ const NavBar = () => {
                         <NavItem>
                             <NavLink className="nav-link" to="/profile">Profile</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink className="nav-link" to="/login">Login</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
         </Navbar>
