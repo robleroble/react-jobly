@@ -1,53 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem, Collapse, NavbarToggler } from "reactstrap";
+import UserContext from "./UserContext";
 import "../Stylings/NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ logout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const loggedIn = false;
+  const { currentUser } = useContext(UserContext);
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const loggedInNav = (
-    <>
-      <NavItem>
-        <NavLink className="nav-link" to="/companies">
-          Companies
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink className="nav-link" to="/jobs">
-          Jobs
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink className="nav-link" to="/profile">
-          Profile
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink className="nav-link" to="/logout">
-          Log out [username]
-        </NavLink>
-      </NavItem>
-    </>
-  );
+  // needs to be a func for some reason because currentUser won't work in a variable...
+  function loggedInNav() {
+    return (
+      <>
+        <NavItem>
+          <NavLink className="nav-link" to="/companies">
+            Companies
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav-link" to="/jobs">
+            Jobs
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav-link" to="/profile">
+            Profile
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav-link" to="/" onClick={logout}>
+            Log out {currentUser.username}
+          </NavLink>
+        </NavItem>
+      </>
+    );
+  }
 
-  const loggedOutNav = (
-    <>
-      <NavItem>
-        <NavLink className="nav-link" to="/login">
-          Login
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink className="nav-link" to="/signup">
-          Sign Up
-        </NavLink>
-      </NavItem>
-    </>
-  );
+  function loggedOutNav() {
+    return (
+      <>
+        <NavItem>
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav-link" to="/signup">
+            Sign Up
+          </NavLink>
+        </NavItem>
+      </>
+    );
+  }
 
   return (
     <Navbar className="ml-5" color="dark" dark expand="md">
@@ -57,7 +63,7 @@ const NavBar = () => {
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ms-auto me-5" navbar>
-          {loggedIn ? loggedInNav : loggedOutNav}
+          {currentUser ? loggedInNav() : loggedOutNav()}
         </Nav>
       </Collapse>
     </Navbar>

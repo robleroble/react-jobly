@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Container,
   Button,
   CardTitle,
   CardSubtitle,
   CardText,
+  NavLink,
 } from "reactstrap";
 import "../Stylings/Home.css";
+import UserContext from "./UserContext";
 
 const Home = () => {
-  const loggedIn = true;
+  const { currentUser } = useContext(UserContext);
 
-  const loggedInHome = (
-    <>
-      <CardText className="my-2">Welcome back, [USER]</CardText>
-    </>
-  );
+  function loggedInHome() {
+    return (
+      <>
+        <CardText className="my-2">
+          Welcome back, {currentUser.username}
+        </CardText>
+      </>
+    );
+  }
 
-  const loggedOutHome = (
-    <>
-      <div className="my-2">
-        <Button className="mx-3">Login</Button>
-        <Button className="mx-3">Sign up</Button>
-      </div>
-    </>
-  );
+  function loggedOutHome() {
+    return (
+      <>
+        <div className="d-flex my-2">
+          <NavLink>
+            <Button>Login</Button>
+          </NavLink>
+          <NavLink>
+            <Button>Sign up</Button>
+          </NavLink>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="home-body d-flex align-items-center">
@@ -33,7 +45,7 @@ const Home = () => {
         <CardSubtitle className="h5 my-2">
           All the jobs in one, convenient place.
         </CardSubtitle>
-        {loggedIn ? loggedInHome : loggedOutHome}
+        {currentUser ? loggedInHome() : loggedOutHome()}
       </Container>
     </div>
   );
