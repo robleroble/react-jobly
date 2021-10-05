@@ -5,8 +5,8 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
-  NavLink,
 } from "reactstrap";
+import {NavLink} from "react-router-dom"
 import "../Stylings/Home.css";
 import UserContext from "./UserContext";
 
@@ -27,10 +27,11 @@ const Home = () => {
     return (
       <>
         <div className="d-flex my-2">
-          <NavLink>
-            <Button>Login</Button>
+
+          <NavLink className="mx-2" to="/login">
+            <Button classsName="mx-2">Login</Button>
           </NavLink>
-          <NavLink>
+          <NavLink className="mx-2" to="/signup">
             <Button>Sign up</Button>
           </NavLink>
         </div>
