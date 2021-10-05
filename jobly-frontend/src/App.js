@@ -105,9 +105,9 @@ function App() {
             <Route exact path="/signup">
               <Signup register={register} />
             </Route>
-            <Route exact path="/profile">
+            <ProtectedRoute exact path="/profile">
               <Profile />
-            </Route>
+            </ProtectedRoute>
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>
