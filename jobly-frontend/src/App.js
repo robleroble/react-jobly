@@ -18,6 +18,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [currentUser, setCurrentUser] = useState(null);
   const [infoLoaded, setInfoLoaded] = useState(false);
+  const [jobsApplied, setJobsApplied] = useState(new Set([]))
 
   useEffect(() => {
     setInfoLoaded(false);
@@ -35,6 +36,12 @@ function App() {
         // get user info from username
         let currUser = await JoblyApi.getUser(username);
         setCurrentUser(currUser);
+        // takes user job ids
+        let jobs = new Set([]);
+        for (let jobId of currUser.applications) {
+          jobs.add(jobId)
+        }
+        setJobsApplied(jobs)
       } catch (err) {
         console.error("App not loading user info", err);
         setCurrentUser(null);
@@ -83,7 +90,7 @@ function App() {
   return (
     <div className="App d-flex flex-column">
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, jobsApplied, setJobsApplied }}>
           <NavBar logout={logout} />
 
           <Switch>
